@@ -1,3 +1,6 @@
+
+
+
 #include<iostream>
 using namespace std;
 
@@ -46,10 +49,9 @@ int main()
 
 		cout << endl << endl << "Would you like to try again?";
 		cin >> retry;
-	} while (retry = 'y');
+	} while (retry == 'y');
 	
-	cout << "Press any key to continue";
-	cin >> dummy;
+	system("pause");
 
 	return 0;
 }
@@ -136,12 +138,12 @@ bool checkRange(int arrayRow1[], int arrayRow2[], int arrayRow3[], int size, int
 //checks that each number is unique
 bool checkUnique(int arrayRow1[], int arrayRow2[], int arrayRow3[], int size)
 {
-	if (arrayRow1[1] != arrayRow1[2] && arrayRow1[1] != arrayRow1[1] && arrayRow1[1] != arrayRow2[1] && arrayRow1[1] != arrayRow2[2] && arrayRow1[1] != arrayRow2[3]
-		&& arrayRow1[1] != arrayRow3[1] && arrayRow1[1] != arrayRow3[2] && arrayRow1[1] != arrayRow3[3] && arrayRow1[2] != arrayRow1[3] && arrayRow1[2] != arrayRow2[2] && arrayRow1[2] != arrayRow2[3]
-		&& arrayRow1[2] != arrayRow3[1] && arrayRow1[2] != arrayRow3[2] && arrayRow1[2] != arrayRow3[3] && arrayRow1[3] != arrayRow2[1] && arrayRow1[3] != arrayRow2[2] && arrayRow1[3] != arrayRow2[3]
-		&& arrayRow1[3] != arrayRow3[1] && arrayRow1[3] != arrayRow3[2] && arrayRow1[3] != arrayRow3[3] && arrayRow2[1] != arrayRow2[2] && arrayRow2[1] != arrayRow2[3] && arrayRow2[1] != arrayRow3[1]
-		&& arrayRow2[1] != arrayRow3[2] && arrayRow2[1] != arrayRow3[3] && arrayRow2[2] != arrayRow2[3] && arrayRow2[2] != arrayRow3[1] && arrayRow2[2] != arrayRow3[2] && arrayRow2[2] != arrayRow3[3]
-		&& arrayRow2[3] != arrayRow3[1] && arrayRow2[3] != arrayRow3[2] && arrayRow2[3] != arrayRow3[3] && arrayRow3[1] != arrayRow3[2] && arrayRow3[1] != arrayRow3[3] && arrayRow3[2] != arrayRow3[3])
+	if (arrayRow1[0] != arrayRow1[1] && arrayRow1[0] != arrayRow1[2] && arrayRow1[0] != arrayRow2[0] && arrayRow1[0] != arrayRow2[1] && arrayRow1[0] != arrayRow2[2]
+		&& arrayRow1[0] != arrayRow3[0] && arrayRow1[0] != arrayRow3[1] && arrayRow1[0] != arrayRow3[2] && arrayRow1[1] != arrayRow1[2] && arrayRow1[1] != arrayRow2[1] && arrayRow1[1] != arrayRow2[2]
+		&& arrayRow1[1] != arrayRow3[0] && arrayRow1[1] != arrayRow3[1] && arrayRow1[1] != arrayRow3[2] && arrayRow1[2] != arrayRow2[0] && arrayRow1[2] != arrayRow2[1] && arrayRow1[2] != arrayRow2[2]
+		&& arrayRow1[2] != arrayRow3[0] && arrayRow1[2] != arrayRow3[1] && arrayRow1[2] != arrayRow3[2] && arrayRow2[0] != arrayRow2[1] && arrayRow2[0] != arrayRow2[2] && arrayRow2[0] != arrayRow3[0]
+		&& arrayRow2[0] != arrayRow3[1] && arrayRow2[0] != arrayRow3[2] && arrayRow2[1] != arrayRow2[2] && arrayRow2[1] != arrayRow3[0] && arrayRow2[1] != arrayRow3[1] && arrayRow2[1] != arrayRow3[2]
+		&& arrayRow2[2] != arrayRow3[0] && arrayRow2[2] != arrayRow3[1] && arrayRow2[2] != arrayRow3[2] && arrayRow3[0] != arrayRow3[1] && arrayRow3[0] != arrayRow3[2] && arrayRow3[1] != arrayRow3[2])
 		return true;
 	else
 		return false;
@@ -151,12 +153,12 @@ bool checkUnique(int arrayRow1[], int arrayRow2[], int arrayRow3[], int size)
 bool checkRowSum(int arrayrow1[], int arrayrow2[], int arrayrow3[], int size)
 {
 	int row1Sum = 0, row2Sum = 0, row3Sum = 0;
-	row1Sum = arrayrow1[1] + arrayrow1[2] + arrayrow1[3];
-	row2Sum = arrayrow2[1] + arrayrow2[2] + arrayrow2[3];
+	row1Sum = arrayrow1[0] + arrayrow1[1] + arrayrow1[2];
+	row2Sum = arrayrow2[0] + arrayrow2[1] + arrayrow2[2];
 	if (row1Sum != row2Sum)
 		return false;
 	else
-		row3Sum = arrayrow3[1] + arrayrow3[2] + arrayrow3[3];
+		row3Sum = arrayrow3[0] + arrayrow3[1] + arrayrow3[2];
 	if (row1Sum != row3Sum || row2Sum != row3Sum)
 		return false;
 	else
@@ -166,12 +168,12 @@ bool checkRowSum(int arrayrow1[], int arrayrow2[], int arrayrow3[], int size)
 bool checkColSum(int arrayrow1[], int arrayrow2[], int arrayrow3[], int size)
 {
 	int col1Sum = 0, col2Sum = 0, col3Sum = 0, row1Sum = 0;
-	col1Sum = arrayrow1[1] + arrayrow2[1] + arrayrow3[1];
-	col2Sum = arrayrow1[2] + arrayrow2[2] + arrayrow3[2];
+	col1Sum = arrayrow1[0] + arrayrow2[0] + arrayrow3[0];
+	col2Sum = arrayrow1[1] + arrayrow2[1] + arrayrow3[1];
 	if (col1Sum != col2Sum)
 		return false;
 	else
-		col3Sum = arrayrow1[3] + arrayrow2[3] + arrayrow3[3];
+		col3Sum = arrayrow1[2] + arrayrow2[2] + arrayrow3[2];
 	if (col1Sum != col3Sum || col2Sum != col3Sum)
 		return false;
 	else
@@ -181,8 +183,8 @@ bool checkColSum(int arrayrow1[], int arrayrow2[], int arrayrow3[], int size)
 bool checkDiagSum(int arrayrow1[], int arrayrow2[], int arrayrow3[], int size)
 {
 	int diag1 = 0, diag2 = 0;
-	diag1 = arrayrow1[1] + arrayrow2[2] + arrayrow3[3];
-	diag2 = arrayrow1[3] + arrayrow2[2] + arrayrow3[1];
+	diag1 = arrayrow1[0] + arrayrow2[1] + arrayrow3[2];
+	diag2 = arrayrow1[2] + arrayrow2[1] + arrayrow3[0];
 	if (diag1 != diag2)
 		return false;
 	else
